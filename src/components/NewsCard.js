@@ -31,14 +31,14 @@ function NewsCard({ article }) {
       <button
         onClick={handleSave}
         className={`ml-4 px-4 py-2 rounded ${
-          isSaved ? "bg-red-500 text-white" : "bg-green-500 text-white"
+          isSaved ? "bg-red-500 text-white hidden" : "bg-green-500 text-white"
         }`}
       >
-        {isSaved ? "Un-Save" : "Save"}
+        {isSaved ? "un-save" : "Save"}
       </button>
       {isSaved && (
         <Link
-          to={`/detail/${article._id}`}
+          to={`${article.web_url}`}
           className="ml-4 bg-blue-500 text-white px-4 py-2 rounded"
         >
           Detail

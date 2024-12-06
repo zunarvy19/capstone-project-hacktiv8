@@ -11,7 +11,7 @@ const savedSlice = createSlice({
     },
     removeArticle: (state, action) => {
       state.savedArticles = state.savedArticles.filter(
-        (article) => article._id !== action.payload._id
+        (article) => article.web_url !== action.payload.web_url
       );
     },
   },

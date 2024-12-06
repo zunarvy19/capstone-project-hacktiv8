@@ -6,6 +6,8 @@ function Saved() {
   const savedArticles = useSelector((state) => state.saved.savedArticles);
   const dispatch = useDispatch();
 
+  console.log(savedArticles);
+
   return (
     <div className="p-5">
       <h1 className="text-2xl font-bold mb-4">Saved News</h1>
@@ -13,7 +15,7 @@ function Saved() {
         {savedArticles.map((article, index) => (
           <li key={index} className="mb-4">
             <a href={article.web_url} target="_blank" rel="noopener noreferrer">
-              {article.title}
+              {article.abstract || "No Title Available"}
             </a>
             <button
               onClick={() => dispatch(removeArticle(article))}
