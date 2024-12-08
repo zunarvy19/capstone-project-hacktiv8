@@ -13,11 +13,17 @@ function Programming() {
   }, []);
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold mb-4">Programming News</h1>
-      {articles.map((article) => (
-        <NewsCard key={article._id} article={article} />
-      ))}
+    <div className="py-6">
+      <h1 className="text-3xl font-bold my-6 text-center">Programming News</h1>
+
+      <hr className=" border border-gray-200 border-t-2 w-[89%] flex justify-center mx-auto mb-6"></hr>
+      <div className="flex justify-center">
+        <div className="grid grid-cols-4 gap-x-[1rem]">
+          {articles.map((article) => (
+            <NewsCard key={article._id} article={article} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

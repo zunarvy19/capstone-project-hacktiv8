@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 text-white p-4">
+    <nav className="bg-[#222831] text-white p-5">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-lg font-bold">
+        <h1 className="text-2xl font-bold">
           <NavLink to="/" className="hover:text-gray-300">
             NewsApp
           </NavLink>
@@ -16,7 +16,7 @@ const Navbar = () => {
             to="/"
             className={({ isActive }) =>
               `hover:text-gray-300 ${
-                isActive ? "text-blue-400 font-bold" : "text-white"
+                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
               }`
             }
           >
@@ -26,7 +26,7 @@ const Navbar = () => {
             to="/programming"
             className={({ isActive }) =>
               `hover:text-gray-300 ${
-                isActive ? "text-blue-400 font-bold" : "text-white"
+                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
               }`
             }
           >
@@ -36,7 +36,7 @@ const Navbar = () => {
             to="/search"
             className={({ isActive }) =>
               `hover:text-gray-300 ${
-                isActive ? "text-blue-400 font-bold" : "text-white"
+                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
               }`
             }
           >
@@ -46,7 +46,7 @@ const Navbar = () => {
             to="/saved"
             className={({ isActive }) =>
               `hover:text-gray-300 ${
-                isActive ? "text-blue-400 font-bold" : "text-white"
+                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
               }`
             }
           >

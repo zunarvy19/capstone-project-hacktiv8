@@ -11,7 +11,7 @@ import "./index.css";
 function App() {
   return (
     <Router>
-      <div>
+      <div id="root">
         <Navbar />
         <Routes>
           <Route path="/" element={<Indonesia />} />

@@ -17,33 +17,36 @@ function NewsCard({ article }) {
   };
 
   return (
-    <div className="border p-4 mb-4 rounded shadow">
-      <h2 className="text-lg font-bold">{article.headline.main}</h2>
-      <p>{article.abstract}</p>
-      <a
-        href={article.web_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-500 underline"
-      >
-        Read more
-      </a>
-      <button
-        onClick={handleSave}
-        className={`ml-4 px-4 py-2 rounded ${
-          isSaved ? "bg-red-500 text-white hidden" : "bg-green-500 text-white"
-        }`}
-      >
-        {isSaved ? "un-save" : "Save"}
-      </button>
-      {isSaved && (
-        <Link
-          to={`${article.web_url}`}
-          className="ml-4 bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Detail
-        </Link>
-      )}
+    <div className="">
+      <div className="border p-4 mb-4 rounded shadow-lg max-w-sm max-h-full">
+        <h2 className="text-xl font-bold">{article.headline.main}</h2>
+        <p className="my-6 text-base">{article.abstract}</p>
+        <div className="mt-10 flex justify-end">
+          <button
+            onClick={handleSave}
+            className={`mr-4 px-4 py-2 rounded ${
+              isSaved
+                ? "bg-red-500 text-white hidden"
+                : "border border-[#387478] text-[#387478] font-semibold"
+            }`}
+          >
+            {isSaved ? "Un-save" : "Save"}
+          </button>
+          {isSaved && (
+            <Link
+              to={`${article.web_url}`}
+              className="mr-4 border border-[#387478] text-[#387478] font-semibold px-4 py-2 rounded"
+            >
+              Detail
+            </Link>
+          )}
+          <a href={article.web_url} target="_blank" rel="noopener noreferrer">
+            <button className="px-4 py-2 rounded bg-[#387478] text-white">
+              News Page
+            </button>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
