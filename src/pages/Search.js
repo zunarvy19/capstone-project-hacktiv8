@@ -14,12 +14,12 @@ function Search() {
       .then((data) => setArticles(data.response.docs));
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (query.trim()) {
-  //     setLastSearch(query);
-  //   }
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      setLastSearch(query);
+    }
+  };
 
   return (
     <div className="p-5">
@@ -31,7 +31,7 @@ function Search() {
 
       <div className="flex flex-col justify-center items-end mx-auto max-w-fit">
         <div className="flex flex-row max-w-fit my-3 justify-end">
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               value={query}
