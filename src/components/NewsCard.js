@@ -27,7 +27,7 @@ function NewsCard({ article }) {
             className={`mr-4 px-4 py-2 rounded ${
               isSaved
                 ? "bg-red-500 text-white hidden"
-                : "border border-[#387478] text-[#387478] font-semibold"
+                : "border border-[#387478] text-[#387478] font-semibold btn hover:bg-white hover:border-[#387478]"
             }`}
           >
             {isSaved ? "Un-save" : "Save"}
@@ -41,7 +41,7 @@ function NewsCard({ article }) {
             </Link>
           )}
           <a href={article.web_url} target="_blank" rel="noopener noreferrer">
-            <button className="px-4 py-2 rounded bg-[#387478] text-white">
+            <button className="btn px-4 py-2 rounded bg-[#387478] text-white hover:bg-[#387478]">
               News Page
             </button>
           </a>
