@@ -27,7 +27,7 @@ function Programming() {
       ) : (
         <div className="flex justify-center">
           {articles.length > 0 ? (
-            <div className="grid grid-cols-4 gap-x-[1rem]">
+            <div className="grid grid-cols-3 gap-x-[1rem]">
               {articles.map((article) => (
                 <NewsCard key={article._id} article={article} />
               ))}

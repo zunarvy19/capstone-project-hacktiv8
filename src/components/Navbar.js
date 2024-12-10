@@ -1,23 +1,22 @@
-// src/components/Navbar.js
 import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-[#222831] text-white p-5">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
-          <NavLink to="/" className="hover:text-gray-300">
-            NewsApp
-          </NavLink>
-        </h1>
-        <div className="flex space-x-4">
+    <nav className="bg-[#fff] text-black p-5">
+      <div className="container mx-auto flex flex-col gap-y-5 items-center">
+        <div>
+          <h1 className="text-4xl font-bold">
+            <NavLink to="/" className="">
+              NewsApp
+            </NavLink>
+          </h1>
+        </div>
+        <div className="flex space-x-16 border-t-2 border-black py-5">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `hover:text-gray-300 ${
-                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
-              }`
+              ` ${isActive ? "underline font-bold" : "text-black"}`
             }
           >
             Indonesia
@@ -25,9 +24,7 @@ const Navbar = () => {
           <NavLink
             to="/programming"
             className={({ isActive }) =>
-              `hover:text-gray-300 ${
-                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
-              }`
+              ` ${isActive ? "underline font-bold" : "text-black"}`
             }
           >
             Programming
@@ -35,9 +32,7 @@ const Navbar = () => {
           <NavLink
             to="/search"
             className={({ isActive }) =>
-              `hover:text-gray-300 ${
-                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
-              }`
+              ` ${isActive ? "underline font-bold" : "text-black"}`
             }
           >
             Search
@@ -45,14 +40,13 @@ const Navbar = () => {
           <NavLink
             to="/saved"
             className={({ isActive }) =>
-              `hover:text-gray-300 ${
-                isActive ? "text-blue-[#ECDFCC] font-bold" : "text-white"
-              }`
+              ` ${isActive ? "underline font-bold" : "text-black"}`
             }
           >
             Saved
           </NavLink>
         </div>
+        <hr className="border border-gray-200 border-t-2 w-[89%] flex justify-center mx-auto"></hr>
       </div>
     </nav>
   );

@@ -16,7 +16,7 @@ function Programming() {
 
   return (
     <div className="py-6">
-      <h1 className="text-3xl font-bold my-6 text-center">Programming News</h1>
+      <h1 className="text-3xl font-bold my-6 text-center">Indonesia News</h1>
 
       <hr className="border border-gray-200 border-t-2 w-[89%] flex justify-center mx-auto mb-6"></hr>
 
@@ -27,7 +27,7 @@ function Programming() {
       ) : (
         <div className="flex justify-center">
           {articles.length > 0 ? (
-            <div className="grid grid-cols-4 gap-x-[1rem]">
+            <div className="grid grid-cols-3 gap-x-[1rem]">
               {articles.map((article) => (
                 <NewsCard key={article._id} article={article} />
               ))}
