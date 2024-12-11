@@ -13,6 +13,7 @@ function Saved() {
   return (
     <div className="p-5">
       <h1 className="text-3xl font-bold my-3 text-center">Saved News</h1>
+      <hr className="border border-gray-200 border-t-2 w-[89%] flex justify-center mx-auto mb-6"></hr>
 
       <div className="w-[89%] flex justify-center mx-auto">
         <hr className="border border-gray-200 border-t-2 mb-6"></hr>
