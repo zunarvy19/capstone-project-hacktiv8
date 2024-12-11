@@ -8,7 +8,7 @@ const Navbar = () => {
         <div>
           <h1 className="text-5xl font-medium tracking-wide">
             <NavLink to="/" className="" id="title">
-              NewsApp
+              NewTimes
             </NavLink>
           </h1>
         </div>
