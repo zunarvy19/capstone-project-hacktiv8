@@ -16,29 +16,42 @@ function NewsCard({ article }) {
     }
   };
 
+  const truncateText = (text, wordLimit) => {
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "...";
+    }
+    return text;
+  };
   return (
-    <div className="">
-      <div className="card bg-base-100 w-96 shadow-xl">
-        <figure>
-          {article.multimedia?.length > 0 ? (
-            <img
-              src={`https://www.nytimes.com/${article.multimedia[0]?.url}`}
-              alt={article.headline.main}
-              className="w-full h-48 object-cover"
-            />
-          ) : (
-            <img
-              src="https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="News"
-              className="w-full h-48 object-cover"
-            />
-          )}
-        </figure>
-
-        <div className="card-body">
-          <h2 className="card-title">{article.headline.main}</h2>
-          <p className="text-base">{article.abstract}</p>
-          <div className=" card-actions justify-end">
+    <>
+      <div className="border rounded-lg overflow-hidden shadow-md">
+        {article.multimedia?.length > 0 ? (
+          <img
+            src={`https://www.nytimes.com/${article.multimedia[0]?.url}`}
+            alt={article.headline.main}
+            className="w-full h-48 object-cover"
+          />
+        ) : (
+          <img
+            src="https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="News"
+            className="w-full h-48 object-cover"
+          />
+        )}
+        <div className="p-4">
+          <h3 className="text-lg font-semibold">
+            {article?.headline?.main || "No headline available"}
+          </h3>
+          <p className="text-sm text-gray-500 mt-2">
+            {truncateText(article?.abstract, 20) || "No description available"}
+          </p>
+          <p className="text-sm text-gray-400 my-3">
+            {article?.pub_date
+              ? new Date(article.pub_date).toDateString()
+              : "No date"}
+          </p>
+          <div className="card-actions justify-end">
             <button
               onClick={handleSave}
               className={`mr-4 px-4 py-2 rounded ${
@@ -51,21 +64,16 @@ function NewsCard({ article }) {
             </button>
             {isSaved && (
               <Link
-                to={`${article.web_url}`}
+                to="/saved"
                 className="mr-4 border border-[#387478] text-[#387478] font-semibold px-4 py-2 rounded"
               >
-                Detail
+                Read
               </Link>
             )}
-            <a href={article.web_url} target="_blank" rel="noopener noreferrer">
-              <button className="btn px-4 py-2 rounded bg-[#387478] text-white hover:bg-[#387478]">
-                News Page
-              </button>
-            </a>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import Indonesia from "./pages/Indonesia";
 import Programming from "./pages/Programming";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
+import Latest from "./pages/Latest";
 import DetailNews from "./pages/DetailNews";
 import "./index.css";
 
@@ -14,7 +15,8 @@ function App() {
       <div id="root">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Indonesia />} />
+          <Route path="/" element={<Latest />} />
+          <Route path="/indonesia" element={<Indonesia />} />
           <Route path="/programming" element={<Programming />} />
           <Route path="/search" element={<Search />} />
           <Route path="/saved" element={<Saved />} />

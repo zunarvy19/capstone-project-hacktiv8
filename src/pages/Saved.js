@@ -16,46 +16,53 @@ function Saved() {
       <div className="w-[89%] flex justify-center mx-auto">
         <hr className="border border-gray-200 border-t-2 mb-6"></hr>
         <div className="overflow-x-auto ">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Abstract</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {savedArticles.map((article, index) => (
-                <tr key={index}>
-                  <th>{++number}</th>
-                  <td>{article.headline.main}</td>
-                  <td>{article.abstract}</td>
-                  <td>
-                    <ul className="flex flex-row gap-x-5">
-                      <li className="">
-                        <a
-                          className="btn "
-                          href={article.web_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Read
-                        </a>
-                      </li>
-                      <li
-                        className="btn btn-warning"
-                        onClick={() => dispatch(removeArticle(article))}
-                      >
-                        Delete
-                      </li>
-                    </ul>
-                  </td>
+          {savedArticles > [1] ? (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Abstract</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {savedArticles.map((article, index) => (
+                  <tr key={index}>
+                    <th>{++number}</th>
+                    <td>{article.headline.main}</td>
+                    <td>{article.abstract}</td>
+                    <td>
+                      <ul className="flex flex-row gap-x-5">
+                        <li className="">
+                          <a
+                            className="btn "
+                            href={article.web_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Read
+                          </a>
+                        </li>
+                        <li
+                          className="btn btn-warning"
+                          onClick={() => dispatch(removeArticle(article))}
+                        >
+                          Delete
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="flex justify-center items-center h-64">
+              <p className="text-gray-500 text-lg font-semibold">
+                No saved articles found. Save articles to view them here!
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
