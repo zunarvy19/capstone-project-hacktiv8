@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-[#fff] text-black py-2">
+    <nav className="bg-[#fff] text-black py-4">
       <div className="container mx-auto flex flex-col gap-y items-center">
         <div>
-          <h1 className="text-4xl font-bold">
-            <NavLink to="/" className="">
+          <h1 className="text-5xl font-medium tracking-wide">
+            <NavLink to="/" className="" id="title">
               NewsApp
             </NavLink>
           </h1>

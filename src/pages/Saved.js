@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeArticle } from "../redux/features/savedSlice";
+import { Link } from "react-router-dom";
 
 function Saved() {
   const savedArticles = useSelector((state) => state.saved.savedArticles);
@@ -11,7 +12,7 @@ function Saved() {
 
   return (
     <div className="p-5">
-      <h1 className="text-3xl font-bold my-6 text-center">Saved News</h1>
+      <h1 className="text-3xl font-bold my-3 text-center">Saved News</h1>
 
       <div className="w-[89%] flex justify-center mx-auto">
         <hr className="border border-gray-200 border-t-2 mb-6"></hr>
@@ -59,7 +60,11 @@ function Saved() {
           ) : (
             <div className="flex justify-center items-center h-64">
               <p className="text-gray-500 text-lg font-semibold">
-                No saved articles found. Save articles to view them here!
+                No saved articles found. Save
+                <Link to="/" className="font-extrabold text-black">
+                  {" Article "}
+                </Link>
+                to view them here!
               </p>
             </div>
           )}

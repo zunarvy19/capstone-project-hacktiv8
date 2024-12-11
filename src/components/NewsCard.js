@@ -25,7 +25,7 @@ function NewsCard({ article }) {
   };
   return (
     <>
-      <div className="border rounded-lg overflow-hidden shadow-md">
+      <div className="border rounded-lg overflow-hidden shadow-md flex flex-col h-full">
         {article.multimedia?.length > 0 ? (
           <img
             src={`https://www.nytimes.com/${article.multimedia[0]?.url}`}
@@ -39,7 +39,7 @@ function NewsCard({ article }) {
             className="w-full h-48 object-cover"
           />
         )}
-        <div className="p-4">
+        <div className="p-4 flex flex-col flex-1">
           <h3 className="text-lg font-semibold">
             {article?.headline?.main || "No headline available"}
           </h3>
@@ -51,13 +51,13 @@ function NewsCard({ article }) {
               ? new Date(article.pub_date).toDateString()
               : "No date"}
           </p>
-          <div className="card-actions justify-end">
+          <div className="mt-auto flex justify-end items-end">
             <button
               onClick={handleSave}
-              className={`mr-4 px-4 py-2 rounded ${
+              className={`mr-4 rounded ${
                 isSaved
-                  ? "bg-red-500 text-white hidden"
-                  : "border border-[#387478] text-[#387478] font-semibold btn hover:bg-white hover:border-[#387478]"
+                  ? "btn btn-error px-4 py-2 text-white"
+                  : "btn btn-outline"
               }`}
             >
               {isSaved ? "Un-save" : "Save"}
@@ -65,7 +65,7 @@ function NewsCard({ article }) {
             {isSaved && (
               <Link
                 to="/saved"
-                className="mr-4 border border-[#387478] text-[#387478] font-semibold px-4 py-2 rounded"
+                className="mr-4 border btn btn-outline px-4 py-2 "
               >
                 Read
               </Link>

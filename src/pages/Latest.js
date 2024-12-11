@@ -19,7 +19,7 @@ function Latest() {
   }, []);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto pb-5">
       <h1 className="text-3xl font-bold my-4 text-start">Latest News</h1>
 
       {isLoading ? (
@@ -66,26 +66,28 @@ function Latest() {
 
             <div className="space-y-4 md:col-span-2">
               {articles.slice(1, 4).map((article) => (
-                <div key={article._id} className="flex space-x-4">
-                  <img
-                    src={
-                      `https://www.nytimes.com/${article.multimedia[0]?.url}` ||
-                      "https://via.placeholder.com/150"
-                    }
-                    alt="News"
-                    className="min-w-fit w-52 h-24 object-cover rounded-lg"
-                  />
-                  <div>
-                    <h3 className="text-lg font-semibold">
-                      {article?.headline?.main || "No headline available"}
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-2">
-                      {article?.pub_date
-                        ? new Date(article.pub_date).toDateString()
-                        : "No date"}
-                    </p>
+                <a href={article.web_url} className="flex">
+                  <div key={article._id} className="flex space-x-4">
+                    <img
+                      src={
+                        `https://www.nytimes.com/${article.multimedia[0]?.url}` ||
+                        "https://via.placeholder.com/150"
+                      }
+                      alt="News"
+                      className="min-w-fit w-52 h-24 object-cover rounded-lg"
+                    />
+                    <div>
+                      <h3 className="text-lg font-semibold">
+                        {article?.headline?.main || "No headline available"}
+                      </h3>
+                      <p className="text-sm text-gray-500 mt-2">
+                        {article?.pub_date
+                          ? new Date(article.pub_date).toDateString()
+                          : "No date"}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
