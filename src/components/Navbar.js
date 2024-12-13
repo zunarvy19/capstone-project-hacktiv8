@@ -38,6 +38,14 @@ const Navbar = () => {
             Programming
           </NavLink>
           <NavLink
+            to="/covid"
+            className={({ isActive }) =>
+              ` ${isActive ? "underline font-bold" : "text-black"}`
+            }
+          >
+            Covid-19
+          </NavLink>
+          <NavLink
             to="/search"
             className={({ isActive }) =>
               ` ${isActive ? "underline font-bold" : "text-black"}`
