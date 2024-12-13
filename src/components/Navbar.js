@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="bg-[#fff] text-black py-4">
-      <div className="container mx-auto flex flex-col gap-y items-center">
+      <div className="container mx-auto flex flex-col items-center">
         <div>
           <h1 className="text-5xl font-medium tracking-wide">
             <NavLink to="/" className="" id="title">
@@ -12,7 +12,7 @@ const Navbar = () => {
             </NavLink>
           </h1>
         </div>
-        <div className="flex space-x-16 border-t-2 border-black py-5">
+        <div className="flex space-x-12 border-t-2 border-black py-5">
           <NavLink
             to="/"
             className={({ isActive }) =>

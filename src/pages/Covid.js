@@ -12,7 +12,7 @@ function Covid() {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=covid19&page=${currentPage}&api-key=${process.env.REACT_APP_NYT_API_KEY}`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=covid&page=${currentPage}&api-key=${process.env.REACT_APP_NYT_API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {
