@@ -64,8 +64,8 @@ function NewsCard({ article }) {
             </button>
             {isSaved && (
               <Link
-                to="/saved"
-                className="mr-4 border btn btn-outline px-4 py-2 "
+                to={article.web_url}
+                className="mr-4 border btn btn-outline px-4 py-2 rounded"
               >
                 Read
               </Link>
