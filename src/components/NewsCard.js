@@ -62,14 +62,12 @@ function NewsCard({ article }) {
             >
               {isSaved ? "Un-save" : "Save"}
             </button>
-            {isSaved && (
-              <Link
-                to={article.web_url}
-                className="mr-4 border btn btn-outline px-4 py-2 rounded"
-              >
-                Read
-              </Link>
-            )}
+            <Link
+              to={article.web_url}
+              className="mr-4 border btn btn-neutral px-4 py-2 rounded bg-p"
+            >
+              Read
+            </Link>
           </div>
         </div>
       </div>
