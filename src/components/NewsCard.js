@@ -23,6 +23,7 @@ function NewsCard({ article }) {
     }
     return text;
   };
+
   return (
     <>
       <div className="border rounded-lg overflow-hidden shadow-md flex flex-col h-full">

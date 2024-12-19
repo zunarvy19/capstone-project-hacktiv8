@@ -64,7 +64,7 @@ function Covid() {
               onClick={handlePrevious}
               disabled={currentPage === 0}
             >
-              Previous page
+              Previous
             </button>
             <button
               className={`join-item btn btn-outline ${
