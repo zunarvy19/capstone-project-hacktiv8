@@ -52,7 +52,9 @@ function Covid() {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 text-center">No news found.</p>
+              <p className="text-gray-500 text-center">
+                No data can be shown, please try again later.
+              </p>
             )}
           </div>
 

@@ -6,16 +6,39 @@ function Latest() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      `https://api.nytimes.com/svc/search/v2/articlesearch.json?facet=true&facet_fields=day_of_week&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const limitedArticles = data.response.docs.slice(0, 8);
-        setArticles(limitedArticles);
-      })
-      .catch((error) => console.error("Error fetching articles:", error))
-      .finally(() => setIsLoading(false));
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch(
+          `https://api.nytimes.com/svc/search/v2/articlesearch.json?facet=true&facet_fields=day_of_week&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}`
+        );
+        const data = await response.json();
+
+        if (data.response.docs.length > 0) {
+          const limitedArticles = data.response.docs.slice(0, 8);
+          setArticles(limitedArticles);
+
+          localStorage.setItem(
+            "savedArticles",
+            JSON.stringify(limitedArticles)
+          );
+        } else {
+          throw new Error("No data from API");
+        }
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+
+        const savedArticles = localStorage.getItem("savedArticles");
+        if (savedArticles) {
+          setArticles(JSON.parse(savedArticles));
+        } else {
+          setArticles([]);
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchArticles();
   }, []);
 
   return (
@@ -26,10 +49,16 @@ function Latest() {
         <div className="flex justify-center items-center h-[50vh]">
           <span className="loading loading-bars loading-lg"></span>
         </div>
+      ) : articles.length === 0 ? (
+        <div className="flex justify-center items-center h-[50vh]">
+          <p className="text-lg text-gray-600">
+            No data can be shown, please try again later.
+          </p>
+        </div>
       ) : (
         <>
           <div className="grid md:grid-cols-3 gap-4 mb-6">
-            <div className="md:col-span-1 ">
+            <div className="md:col-span-1">
               <div className="relative w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-md">
                 <img
                   src={
@@ -66,8 +95,8 @@ function Latest() {
 
             <div className="space-y-4 md:col-span-2">
               {articles.slice(1, 4).map((article) => (
-                <a href={article.web_url} className="flex">
-                  <div key={article._id} className="flex space-x-4">
+                <a key={article._id} href={article.web_url} className="flex">
+                  <div className="flex space-x-4">
                     <img
                       src={
                         `https://www.nytimes.com/${article.multimedia[0]?.url}` ||

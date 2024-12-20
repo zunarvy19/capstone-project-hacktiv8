@@ -10,7 +10,7 @@ function Search() {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
-  const ARTICLES_PER_PAGE = 8;
+  const ARTICLES_PER_PAGE = 3;
 
   const fetchArticles = async (searchQuery, page) => {
     if (!searchQuery.trim()) {
