@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import NewsCard from "../components/NewsCard";
 
 function Search() {
   const [query, setQuery] = useState("");
   const [articles, setArticles] = useState([]);
-  const [lastSearch, setLastSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
   const ARTICLES_PER_PAGE = 3;
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const searchQuery = searchParams.get("q") || "";
+
+  useEffect(() => {
+    if (searchQuery) {
+      setQuery(searchQuery);
+      fetchArticles(searchQuery, currentPage);
+    }
+  }, [searchQuery, currentPage]);
 
   const fetchArticles = async (searchQuery, page) => {
     if (!searchQuery.trim()) {
@@ -36,31 +48,28 @@ function Search() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setLastSearch(query);
-    setCurrentPage(0);
-    fetchArticles(query, 0);
+    if (query.trim()) {
+      setSearchParams({ q: query });
+      setCurrentPage(0);
+    }
   };
 
   const handleNext = () => {
     if (currentPage < totalPages - 1) {
-      const nextPage = currentPage + 1;
-      setCurrentPage(nextPage);
-      fetchArticles(lastSearch, nextPage);
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
   const handlePrevious = () => {
     if (currentPage > 0) {
-      const prevPage = currentPage - 1;
-      setCurrentPage(prevPage);
-      fetchArticles(lastSearch, prevPage);
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
   return (
     <div className="container mx-auto pb-5">
       <h1 className="text-3xl font-bold my-3 text-center capitalize">
-        {lastSearch ? `${lastSearch} News` : "Search News"}
+        {searchQuery ? `${searchQuery} News` : "Search News"}
       </h1>
 
       <hr className="border border-gray-200 border-t-2 w-[89%] flex justify-center mx-auto mb-6"></hr>
@@ -122,9 +131,9 @@ function Search() {
               </button>
             </div>
           </div>
-        ) : lastSearch ? (
+        ) : searchQuery ? (
           <p className="text-gray-500 text-center">
-            No news found for "{lastSearch}".
+            No news found for "{searchQuery}".
           </p>
         ) : null}
       </div>

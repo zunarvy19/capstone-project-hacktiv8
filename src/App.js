@@ -20,7 +20,7 @@ function App() {
           <Route path="/indonesia" element={<Indonesia />} />
           <Route path="/programming" element={<Programming />} />
           <Route path="/covid" element={<Covid />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/search/:?" element={<Search />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/detail/:id" element={<DetailNews />} />
         </Routes>
